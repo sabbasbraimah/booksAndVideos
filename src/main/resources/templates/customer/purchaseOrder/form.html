@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Recipe Form</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous" th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container-fluid" style="margin-top: 20px">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <!--/*@thymesVar id="purchaseOrderCommand" type="ecormmerce.command.PurchaseOrderCommand"*/-->
+            <form  th:object="${purchaseOrderCommand}" th:action="@{'/customer/'+ ${purchaseOrderCommand.getCustomerId()} +'/purchaseOrder'}"  method="post">
+                <div>
+                    <input type="hidden" th:field="*{id}"/>
+                </div>
+                <div class="pannel-group">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Create A Purchase Order</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                purchaseOrderCommand                        <div class="col-md-4 form-group">
+                                    <label>Total Cost     :</label>
+                                    <input type="text" class="form-control"  id="totalCost"  name="totalCost"   value=""/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label>Membership     :</label>
+                                    <input type="text" class="form-control"  id="membershipRrequest"  name="membershipRrequest"   value=""/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                    <div class="col-md-4 form-group">
+                                        <label>Line Item ID:</label>
+                                        <input type="text" class="form-control" id="lineItemId"    name="lineItemId" value=""/>
+                                    </div>
+                                </div>
+                             </div>
+                         </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
